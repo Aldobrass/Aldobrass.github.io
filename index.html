@@ -122,7 +122,7 @@
         }
 
         /* =========================
-           RESPONSIVE MOBILE
+           RESPONSIVE MOBILE (ANIMATED)
            ========================= */
         @media (max-width: 768px) {
         
@@ -133,10 +133,36 @@
                 text-align: center;
             }
         
+            /* FOTO DI HP — MASIH ANIMASI, TAPI HALUS */
             .profile img {
                 max-width: 220px;
                 margin: 0 auto;
-                animation: none; /* biar HP lebih ringan */
+                animation: fadeSlideMobile 8s ease-in-out infinite;
+            }
+        
+            @keyframes fadeSlideMobile {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                20% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                80% {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+            }
+        
+            /* BACKGROUND ANIMASI — LEBIH PELAN */
+            .bg-animated {
+                animation-duration: 25s;
+                opacity: 0.7;
             }
         
             h1 {
