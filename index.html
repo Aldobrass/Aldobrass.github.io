@@ -13,41 +13,67 @@
         }
 
         body {
-            background: linear-gradient(
-                -45deg,
-                #020617,
-                #0f172a,
-                #020617,
-                #020617
-            );
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
-        
+            background: #020617;
             color: #e5e7eb;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* BACKGROUND HALUS */
+        .bg-animated {
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(56,189,248,0.08), transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(99,102,241,0.08), transparent 40%);
+            animation: bgMove 15s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes bgMove {
+            from { transform: translateY(0); }
+            to { transform: translateY(-40px); }
+        }
+
+        /* LAYOUT */
+        .wrapper {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 40px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 60px;
             align-items: center;
         }
-        
-        @keyframes gradientBG {
+
+        /* FOTO */
+        .profile img {
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid #38bdf8;
+            animation: fadeSlide 6s ease-in-out infinite;
+        }
+
+        @keyframes fadeSlide {
             0% {
-                background-position: 0% 50%;
+                opacity: 0;
+                transform: translateX(-40px);
             }
-            50% {
-                background-position: 100% 50%;
+            20% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            80% {
+                opacity: 1;
+                transform: translateX(0);
             }
             100% {
-                background-position: 0% 50%;
+                opacity: 0;
+                transform: translateX(-40px);
             }
         }
 
-
-        .container {
-            max-width: 900px;
-            padding: 40px;
-        }
-
+        /* CONTENT */
         h1 {
             font-size: 2.8rem;
             margin-bottom: 10px;
@@ -72,35 +98,56 @@
         }
 
         li {
-            background: #020617;
-            padding: 15px 20px;
-            margin-bottom: 12px;
-            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.85);
+            border: 1px solid #1e293b;
+            padding: 18px 20px;
+            margin-bottom: 14px;
+            border-radius: 14px;
             transition: 0.3s;
         }
 
         li:hover {
             transform: translateY(-3px);
-            background: #020617dd;
+        }
+
+        a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Halo, saya Albert Cornelius</h1>
-    <p>Web Developer | Laravel | React</p>
+<div class="bg-animated"></div>
 
-    <h2>Project</h2>
-    <ul>
-        <li>
-            <a href="https://github.com/aldobrass/ProjekProduksi" target="_blank">
-                Website Produksi (Laravel)
-            </a>
-        </li>    
-        <li>Website E-Commerce</li>
-        <li>Aplikasi Booking</li>
-    </ul>
+<div class="wrapper">
+    <!-- FOTO KIRI -->
+    <div class="profile">
+        <img src="foto.jpg" alt="Foto Albert">
+    </div>
+
+    <!-- KONTEN KANAN -->
+    <div class="content">
+        <h1>Halo, saya Albert Cornelius</h1>
+        <p>Web Developer | Laravel | React</p>
+
+        <h2>Project</h2>
+        <ul>
+            <li>
+                Website Produksi (Laravel)<br>
+                <a href="https://github.com/aldobrass/ProjekProduksi" target="_blank">
+                    Lihat Kode di GitHub
+                </a>
+            </li>
+            <li>Website E-Commerce</li>
+            <li>Aplikasi Booking</li>
+        </ul>
+    </div>
 </div>
 
 </body>
